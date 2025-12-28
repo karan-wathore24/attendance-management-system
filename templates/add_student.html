@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        body{
+            min-height:100vh;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .card{
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .form-control:focus{
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+
+        .btn-primary{
+            background: #667eea;
+            border: none;
+        }
+
+        .btn-primary:hover{
+            background: #5a67d8;
+        }
+
+        footer{
+            text-align:center;
+            color:#fff;
+            padding:10px;
+            background: rgba(0,0,0,0.2);
+            margin-top: 40px;
+        }
+        </style>
+</head>
+<body>
+{% include "navi.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Add Student</h2>
+        <p class="text-muted">Enter student details to register</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label">Roll Number</label>
+                            <input
+                                type="text"
+                                name="roll_no"
+                                class="form-control"
+                                placeholder="Enter roll number"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Student Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                placeholder="Enter student name"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <input
+                                type="text"
+                                name="department"
+                                class="form-control"
+                                placeholder="Enter department"
+                                required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                Add Student
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+      {% endif %}
+    {% endwith %}
+
+</div>
+<footer class="footer fixed-bottom text-center py-2">
+    © 2025 All rights reserved  @Karan Wathore
+</footer>
+{% endblock %}
+
+
+</body>
+</html>

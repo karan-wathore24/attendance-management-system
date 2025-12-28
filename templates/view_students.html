@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "navi.html" %}
+
+{% block content %}
+<h2>All Students</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student['id'] }}</td>
+            <td>{{ student['roll_no'] }}</td>
+            <td>{{ student['name'] }}</td>
+            <td>{{ student['department'] }}</td>
+            <td>
+                <a href="/update-student/{{ student['id'] }}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/delete-student/{{ student['id'] }}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<footer class="footer fixed-bottom text-center py-2">
+    © 2025 All rights reserved  @Karan Wathore
+</footer>
+{% endblock %}
+
+</body>
+</html>

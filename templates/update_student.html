@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "navi.html" %}
+
+{% block content %}
+<h2>Update Student</h2>
+<form method="POST">
+    <input type="text" name="roll_no" value="{{ student['roll_no'] }}" required class="form-control mb-2">
+    <input type="text" name="name" value="{{ student['name'] }}" required class="form-control mb-2">
+    <input type="text" name="department" value="{{ student['department'] }}" required class="form-control mb-2">
+    <button type="submit" class="btn btn-success">Update Student</button>
+</form>
+<footer class="footer fixed-bottom text-center py-2">
+    © 2025 All rights reserved  @Karan Wathore
+</footer>
+{% endblock %}
+
+</body>
+</html>
